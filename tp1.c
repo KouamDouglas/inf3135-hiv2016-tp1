@@ -118,7 +118,8 @@ int main(int argc, char** argv){
             printf("%10ld\n", villeTab[lecture].population);
         }
  
-//fermeture des fichiers
-return 0;
+    fclose(fichierVille);
+    fclose(fichierPays);
+    return 0;
 }
 
