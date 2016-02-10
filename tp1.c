@@ -21,8 +21,8 @@ typedef struct Ville {
     Pays pays;
 }Ville;
 
-static int compare_population_ville (void const *a, void const *b)
-{   struct Ville const *pa = a;
+static int compare_population_ville (void const *a, void const *b) {
+    struct Ville const *pa = a;
     struct Ville const *pb = b;
     return ((int)pb->population - (int)pa->population);
 }
@@ -44,7 +44,6 @@ int main(int argc, char** argv){
 
     fichierVille=fopen("cities15000.txt","r");
     fichierPays=fopen("countryInfo.txt","r");    
-
     if(!fichierVille||!fichierPays){
         printf("Veuillez verifier les fichiers!\n");
     }else{
@@ -103,23 +102,21 @@ int main(int argc, char** argv){
                 compteurVille++;
             }
             villeTab[remplissageVille] = villeTempo;
-            remplissageVille++;
-        }	
-    }
-    qsort (villeTab, sizeof villeTab / sizeof *villeTab, sizeof *villeTab, compare_population_ville); 
-    int lecture=0;
+            remplissageVille++;   	
+        }
+        qsort (villeTab, sizeof villeTab / sizeof *villeTab, sizeof *villeTab, compare_population_ville); 
+        int lecture=0;
         printf("Rang    Nom                           Pays                               Population \n");
         printf("----    ---                           ----                               ---------- \n");
-
         for (lecture=0; lecture<n; lecture++) {
             printf("%4d ", lecture+1);
             printf("   %-30s", villeTab[lecture].nom);
             printf("%-33s", villeTab[lecture].pays.nom);
             printf("%10ld\n", villeTab[lecture].population);
         }
- 
     fclose(fichierVille);
     fclose(fichierPays);
+    }
     return 0;
 }
 
