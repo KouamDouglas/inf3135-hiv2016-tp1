@@ -23,9 +23,20 @@ typedef struct Ville {
 
 
 int main(int argc, char** argv){
-   
-//test des arguments
-//test des fichiers
+    FILE* fichierVille;
+    FILE* fichierPays;
+    if(argc!=2){
+        printf("Attention!!Le nombres d'arguments doit etre egal a 2 SVP!\n");
+        return 1;
+    }
+
+    long n;
+    n=atol(argv[1]);
+    if(MIN_SAISIE_CLAVIER>n||n>MAX_SAISIE_CLAVIER){
+        printf("Attention!La valeur entree doit etre comprise entre 1 et 5000 SVP!\n");
+        return 1;
+    }    
+
 //ouverture des fichiers
 //recuperartion des donnees utiles
 //traitement des donnees
