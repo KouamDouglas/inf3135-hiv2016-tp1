@@ -20,3 +20,20 @@ typedef struct Ville {
     long population;
     Pays pays;
 }Ville;
+
+
+int main(int argc, char** argv){
+   
+//test des arguments
+//test des fichiers
+//ouverture des fichiers
+//recuperartion des donnees utiles
+//traitement des donnees
+//stockage dans des tableaux
+//effectuer des correspondances
+//affichage 
+//fermeture des fichiers
+
+return 0;
+}
+
