@@ -21,10 +21,11 @@ typedef struct Ville {
     Pays pays;
 }Ville;
 
-
 int main(int argc, char** argv){
+
     FILE* fichierVille;
     FILE* fichierPays;
+
     if(argc!=2){
         printf("Attention!!Le nombres d'arguments doit etre egal a 2 SVP!\n");
         return 1;
@@ -37,9 +38,17 @@ int main(int argc, char** argv){
         return 1;
     }    
 
-//ouverture des fichiers
-//recuperartion des donnees utiles
-//traitement des donnees
+    fichierVille=fopen("cities15000.txt","r");
+    fichierPays=fopen("countryInfo.txt","r");
+
+    if(!fichierVille||!fichierPays){
+        printf("Veuillez verifier les fichiers!\n");
+
+    }else{
+        //recuperartion des donnees utiles
+        //traitement des donnees
+
+    }
 //stockage dans des tableaux
 //effectuer des correspondances
 //affichage 
