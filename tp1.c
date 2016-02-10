@@ -107,8 +107,17 @@ int main(int argc, char** argv){
         }	
     }
     qsort (villeTab, sizeof villeTab / sizeof *villeTab, sizeof *villeTab, compare_population_ville); 
+    int lecture=0;
+        printf("Rang    Nom                           Pays                               Population \n");
+        printf("----    ---                           ----                               ---------- \n");
 
-//affichage 
+        for (lecture=0; lecture<n; lecture++) {
+            printf("%4d ", lecture+1);
+            printf("   %-30s", villeTab[lecture].nom);
+            printf("%-33s", villeTab[lecture].pays.nom);
+            printf("%10ld\n", villeTab[lecture].population);
+        }
+ 
 //fermeture des fichiers
 return 0;
 }
