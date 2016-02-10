@@ -22,12 +22,10 @@ typedef struct Ville {
 }Ville;
 
 int main(int argc, char** argv){
-
     FILE* fichierVille;
     FILE* fichierPays;
-
     if(argc!=2){
-        printf("Attention!!Le nombres d'arguments doit etre egal a 2 SVP!\n");
+        printf("Attention arguments invalides!!Le nombres d'arguments doit etre egal a 2 SVP!\n");
         return 1;
     }
 
@@ -36,24 +34,43 @@ int main(int argc, char** argv){
     if(MIN_SAISIE_CLAVIER>n||n>MAX_SAISIE_CLAVIER){
         printf("Attention!La valeur entree doit etre comprise entre 1 et 5000 SVP!\n");
         return 1;
-    }    
+    }     
 
     fichierVille=fopen("cities15000.txt","r");
-    fichierPays=fopen("countryInfo.txt","r");
+    fichierPays=fopen("countryInfo.txt","r");    
 
     if(!fichierVille||!fichierPays){
         printf("Veuillez verifier les fichiers!\n");
-
     }else{
-        //recuperartion des donnees utiles
-        //traitement des donnees
-
+        Pays paysTab[TAILLE_TAB_PAYS];
+        char buffer[TAILLE_DU_BUFFER];
+        char *token, *ps;
+        int remplissage=0;
+	while ( fgets(buffer,TAILLE_DU_BUFFER,fichierPays) ){
+            if (buffer[0]=='#') {
+                continue;
+            }
+            Pays paysTempo;
+            int compteur = 0;
+            ps = buffer;
+            while ((token = strsep(&ps, "\t")) != NULL) {
+                if(compteur == 0){
+                    strcpy(paysTempo.code, token);
+                }
+                if(compteur == 4 ){
+                    strcpy(paysTempo.nom, token);
+                }
+                compteur++;
+            }
+            paysTab[remplissage] = paysTempo;
+            remplissage++;
+        }
     }
-//stockage dans des tableaux
+    
+
 //effectuer des correspondances
 //affichage 
 //fermeture des fichiers
-
 return 0;
 }
 
