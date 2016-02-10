@@ -21,6 +21,12 @@ typedef struct Ville {
     Pays pays;
 }Ville;
 
+static int compare_population_ville (void const *a, void const *b)
+{   struct Ville const *pa = a;
+    struct Ville const *pb = b;
+    return ((int)pb->population - (int)pa->population);
+}
+
 int main(int argc, char** argv){
     FILE* fichierVille;
     FILE* fichierPays;
@@ -100,9 +106,8 @@ int main(int argc, char** argv){
             remplissageVille++;
         }	
     }
-    
+    qsort (villeTab, sizeof villeTab / sizeof *villeTab, sizeof *villeTab, compare_population_ville); 
 
-//effectuer des correspondances
 //affichage 
 //fermeture des fichiers
 return 0;
