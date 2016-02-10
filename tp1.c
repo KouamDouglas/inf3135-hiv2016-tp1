@@ -65,6 +65,40 @@ int main(int argc, char** argv){
             paysTab[remplissage] = paysTempo;
             remplissage++;
         }
+	
+	Ville villeTab[TAILLE_TAB_VILLE];
+        char bufferVille[TAILLE_DU_BUFFER];
+        char *tokenVille, *psVille ;
+        int remplissageVille=0;
+        while ( fgets(bufferVille,TAILLE_DU_BUFFER,fichierVille)){
+            if (buffer[0]=='#') {
+                continue;
+            }
+            Ville villeTempo;
+            int compteurVille = 0;
+            psVille = bufferVille;
+            char correspondance[10];
+            while ((tokenVille = strsep(&psVille, "\t")) != NULL) {
+                if(compteurVille == 2){
+                    strcpy(villeTempo.nom, tokenVille);
+                }
+                if(compteurVille == 14 ){
+                    villeTempo.population=atol(tokenVille);
+                }
+                if(compteurVille ==8 ){
+                    strcpy(correspondance, tokenVille);
+                    int c=0;
+                    for (c=0; c<TAILLE_TAB_PAYS; c++) {
+                        if (strcmp(paysTab[c].code,correspondance)==0) {
+                            villeTempo.pays=paysTab[c];
+                        }
+                    }
+                }
+                compteurVille++;
+            }
+            villeTab[remplissageVille] = villeTempo;
+            remplissageVille++;
+        }	
     }
     
 
