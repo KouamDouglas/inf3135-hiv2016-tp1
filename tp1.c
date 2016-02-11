@@ -7,8 +7,8 @@
 #define LONG_CODE_PAYS 50
 #define LONG_NOM_VILLE 100
 #define TAILLE_DU_BUFFER 3700
-#define TAILLE_TAB_PAYS 304
-#define TAILLE_TAB_VILLE 23493
+#define TAILLE_TAB_PAYS 310
+#define TAILLE_TAB_VILLE 30000
 
 typedef struct Pays {
     char nom[LONG_NOM_PAYS];
@@ -32,6 +32,7 @@ void validationEntree(int);
 void testeDeParametre(int);
 void traitementDuFichierPays(FILE*,Pays[]);
 void traitementDuFichierVille(FILE*,Pays[],Ville[]);
+void affichage(Ville[],int);
 
 int main(int argc, char** argv){
     FILE* fichierVille=fopen("cities15000.txt","r");
@@ -46,56 +47,17 @@ int main(int argc, char** argv){
     if(!fichierVille||!fichierPays){
         printf("Veuillez verifier les fichiers!\n");
     }else{
-        Pays paysTabValidation[TAILLE_TAB_PAYS];
-        char buffer[TAILLE_DU_BUFFER];
+      static Pays paysTabValidation[TAILLE_TAB_PAYS];
+      static Ville villeTabValidation[TAILLE_TAB_VILLE];
        
         traitementDuFichierPays(fichierPays,paysTabValidation);
-	
-	Ville villeTab[TAILLE_TAB_VILLE];
-        char bufferVille[TAILLE_DU_BUFFER];
-        char *tokenVille, *psVille ;
-        int remplissageVille=0;
-        while ( fgets(bufferVille,TAILLE_DU_BUFFER,fichierVille)){
-            if (buffer[0]=='#') {
-                continue;
-            }
-            Ville villeTempo;
-            int compteurVille = 0;
-            psVille = bufferVille;
-            char correspondance[10];
-            while ((tokenVille = strsep(&psVille, "\t")) != NULL) {
-                if(compteurVille == 2){
-                    strcpy(villeTempo.nom, tokenVille);
-                }
-                if(compteurVille == 14 ){
-                    villeTempo.population=atol(tokenVille);
-                }
-                if(compteurVille ==8 ){
-                    strcpy(correspondance, tokenVille);
-                    int c=0;
-                    for (c=0; c<TAILLE_TAB_PAYS; c++) {
-                        if (strcmp(paysTabValidation[c].code,correspondance)==0) {
-                            villeTempo.pays=paysTabValidation[c];
-                        }
-                    }
-                }
-                compteurVille++;
-            }
-            villeTab[remplissageVille] = villeTempo;
-            remplissageVille++;   	
-        }
-        qsort (villeTab, sizeof villeTab / sizeof *villeTab, sizeof *villeTab, compare_population_ville); 
-        int lecture=0;
-        printf("Rang    Nom                           Pays                               Population \n");
-        printf("----    ---                           ----                               ---------- \n");
-        for (lecture=0; lecture<n; lecture++) {
-            printf("%4d ", lecture+1);
-            printf("   %-30s", villeTab[lecture].nom);
-            printf("%-33s", villeTab[lecture].pays.nom);
-            printf("%10ld\n", villeTab[lecture].population);
-        }
-    fclose(fichierVille);
-    fclose(fichierPays);
+	traitementDuFichierVille(fichierVille,paysTabValidation,villeTabValidation);       
+
+        qsort (villeTabValidation, sizeof villeTabValidation / sizeof *villeTabValidation, sizeof *villeTabValidation, compare_population_ville); 
+        
+        affichage(villeTabValidation,n);
+        fclose(fichierVille);
+        fclose(fichierPays);
     }
     return 0;
 }
@@ -146,3 +108,49 @@ void traitementDuFichierPays(FILE* fichierPays,Pays paysTab[]){
         }
 }
 
+void traitementDuFichierVille(FILE* fichierVille,Pays paysTab[],Ville villeTab[]){
+    char bufferVille[TAILLE_DU_BUFFER];
+    char *tokenVille, *psVille ;
+    int remplissageVille=0;
+    while (fgets(bufferVille,TAILLE_DU_BUFFER,fichierVille)){
+            if (bufferVille[0]=='#') {
+                continue;
+            }
+            Ville villeTempo;
+            int compteurVille = 0;
+            psVille = bufferVille;
+            char correspondance[10];
+            while ((tokenVille = strsep(&psVille, "\t")) != NULL) {
+                if(compteurVille == 2){
+                    strcpy(villeTempo.nom, tokenVille);
+                }
+                if(compteurVille == 14 ){
+                    villeTempo.population=atol(tokenVille);
+                }
+                if(compteurVille ==8 ){
+                    strcpy(correspondance, tokenVille);
+                    int c=0;
+                    for (c=0; c<TAILLE_TAB_PAYS; c++) {
+                        if (strcmp(paysTab[c].code,correspondance)==0) {
+                            villeTempo.pays=paysTab[c];
+                        }
+                    }
+                }
+                compteurVille++;
+            }
+            villeTab[remplissageVille] = villeTempo;
+            remplissageVille++;         
+        }   
+}
+
+void affichage(Ville villeTabValidation[],int n){   
+    int lecture=0;
+    printf("Rang    Nom                           Pays                               Population \n");
+    printf("----    ---                           ----                               ---------- \n");
+    for (lecture=0; lecture<n; lecture++) {
+        printf("%4d ", lecture+1);
+        printf("   %-30s", villeTabValidation[lecture].nom);
+        printf("%-33s", villeTabValidation[lecture].pays.nom);
+        printf("%10ld\n", villeTabValidation[lecture].population);
+    }
+}
