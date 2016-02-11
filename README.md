@@ -7,7 +7,7 @@
 
 ## Auteur
 
-<prénom et nom> (<code permanent>)
+Douglas Kouokam Kouam KOUD16019209
 
 ## Fonctionnement
 
@@ -21,8 +21,9 @@ par fichier)>
 
 ## Références
 
-<citez vos sources ici>
+ L'algorithme du tri QSORT a été inspiré et adapté du tri obtenu sur
+le site http://www.bien-programmer.fr/qsort.htm
 
 ## Statut
 
-<indiquer si le projet est complété ou s'il y a des bogues>
+Le projet a ete complete avec succes.
