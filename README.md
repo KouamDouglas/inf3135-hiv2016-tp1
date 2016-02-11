@@ -42,10 +42,20 @@ Attention arguments invalides!!Le nombres d'arguments doit etre egal a 2 SVP!
 ## Contenu du projet
 
 Le fichier contient:
+
+
 -un fichier tp1.c 
+
+
 -un fichier README.md
+
+
 -un fichier .gitignore
+
+
 -un fichier Makefile pour faciliter la compilation.
+
+
 
 ## Références
 
