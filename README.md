@@ -27,36 +27,21 @@ La correspondance ainsi faite et le tableau etant plein.Un tri par ordre decrois
 s'effectue.Notons bien ici que le nombre de ville a affiche que le programme accepte est entre 1 et 5000.
 Les executions se presentant ainsi sous ces formes.
 
-Exemple:1er cas d'utilisation
-
-[bc491136@malt CoursProgrammation]$ ./tp1 10
-Rang    Nom                           Pays                               Population 
-----    ---                           ----                               ---------- 
-   1    Shanghai                      China                              22315474
-   2    Buenos Aires                  Argentina                          13076300
-   3    Mumbai                        India                              12691836
-   4    Mexico City                   Mexico                             12294193
-   5    Beijing                       China                              11716620
-   6    Karachi                       Pakistan                           11624219
-   7    Istanbul                      Turkey                             11174257
-   8    Tianjin                       China                              11090314
-   9    Guangzhou                     China                              11071424
-  10    Delhi                         India                              10927986
-
-Exemple:2eme cas d'utilisation DEPASSEMENT DE BORNE
-
+Exemple:1er cas d'utilisation DEPASSEMENT DE BORNE
 [bc491136@malt CoursProgrammation]$ ./tp1 5001
 Attention!La valeur entree doit etre comprise entre 1 et 5000 SVP!
 
-Exemple:3eme cas d'utilisation NOMBRE D'ARGUMENTS INVALIDES
-
+Exemple:2eme cas d'utilisation NOMBRE D'ARGUMENTS INVALIDES
 [bc491136@malt CoursProgrammation]$ ./tp1
 Attention arguments invalides!!Le nombres d'arguments doit etre egal a 2 SVP!
 
 ## Contenu du projet
 
-<décrivez brièvement chacun des fichiers contenus dans le projet (une phrase
-par fichier)>
+Le fichier contient:
+-un fichier tp1.c 
+-un fichier README.md
+-un fichier .gitignore
+-un fichier Makefile pour faciliter la compilation.
 
 ## Références
 
