@@ -28,10 +28,14 @@ s'effectue.Notons bien ici que le nombre de ville a affiche que le programme acc
 Les executions se presentant ainsi sous ces formes.
 
 Exemple:1er cas d'utilisation DEPASSEMENT DE BORNE
+
+
 [bc491136@malt CoursProgrammation]$ ./tp1 5001
 Attention!La valeur entree doit etre comprise entre 1 et 5000 SVP!
 
 Exemple:2eme cas d'utilisation NOMBRE D'ARGUMENTS INVALIDES
+
+
 [bc491136@malt CoursProgrammation]$ ./tp1
 Attention arguments invalides!!Le nombres d'arguments doit etre egal a 2 SVP!
 
