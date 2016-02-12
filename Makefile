@@ -1,7 +1,11 @@
 ECHO = echo
-tp1:	 *.c
+tp1:	tp1.o
+	
+	gcc -o tp1 tp1.o
+
+tp1.o:	 tp1.c
 	@$(ECHO) Compilation de l\'executable du programme
-	 gcc -Wall tp1.c -o tp1
+	 gcc -c  -Wall tp1.c
 clean:	
 	@$(ECHO) Suppression de l\'executable du programme
 	rm -f tp1
