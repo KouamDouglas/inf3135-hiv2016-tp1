@@ -44,13 +44,13 @@ Attention arguments invalides!!Le nombres d'arguments doit etre egal a 2 SVP!
 Le fichier contient:
 
 
--un fichier tp1.c 
+-un fichier tp1.c  qui contient le code a executer et a compiler.
 
 
--un fichier README.md
+-un fichier README.md pour detailler et expliquer le contenu et l'ensemble du travail.
 
 
--un fichier .gitignore
+-un fichier .gitignore pour les fichiers qui seront ignorés.
 
 
 -un fichier Makefile pour faciliter la compilation.
