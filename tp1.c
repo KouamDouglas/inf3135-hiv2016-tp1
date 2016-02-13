@@ -53,8 +53,8 @@ int main(int argc, char** argv){
     if(!fichierVille||!fichierPays){
         printf("Veuillez verifier les fichiers!\n");
     }else{
-      static Pays paysTabValidation[TAILLE_TAB_PAYS];
-      static Ville villeTabValidation[TAILLE_TAB_VILLE];
+        static Pays paysTabValidation[TAILLE_TAB_PAYS];
+        static Ville villeTabValidation[TAILLE_TAB_VILLE];
        
         traitementDuFichierPays(fichierPays,paysTabValidation);
 	traitementDuFichierVille(fichierVille,paysTabValidation,villeTabValidation);       
@@ -114,6 +114,7 @@ void testeDeParametre(int nombreDeVille){
     }
 }
 
+
 /*
  * Fonction traitementDuFichierPays qui decoupe le fichier en ligne,recupere
  * les informations essentielles a savoir le code et le nom et le stocke dans
@@ -122,7 +123,6 @@ void testeDeParametre(int nombreDeVille){
  * @param FILE* fichierPays fichier pays
  * @param Pays paysTab[] tableau de structure pays
  */
-
 void traitementDuFichierPays(FILE* fichierPays,Pays paysTab[]){
     char buffer[TAILLE_DU_BUFFER];
     char *token, *ps;
@@ -209,6 +209,6 @@ void affichage(Ville villeTabValidation[],int n){
         printf("%4d ", lecture+1);
         printf("   %-30s", villeTabValidation[lecture].nom);
         printf("%-33s", villeTabValidation[lecture].pays.nom);
-        printf("%10ld\n", villeTabValidation[lecture].population);
+        printf("  %10ld\n", villeTabValidation[lecture].population);
     }
 }
